@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Viraj ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        /* Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Hearts Animation */
+        .heart {
+            position: absolute;
+            pointer-events: none;
+            animation: float 6s ease-in-out infinite;
+            user-select: none;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        /* Main Letter */
+        .letter {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 90%;
+            width: 500px;
+            text-align: center;
+            transform: scale(0);
+            animation: letterAppear 1.5s forwards;
+            position: relative;
+            z-index: 10;
+            margin: 20px;
+            opacity: 0;
+        }
+
+        @keyframes letterAppear {
+            0% { transform: scale(0); opacity: 0; }
+            80% { transform: scale(1.1); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            color: #ff6b6b;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        
+        /* Music Control */
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            padding: 10px 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            z-index: 100;
+            font-size: 1.2rem;
+        }
+
+        /* Love Meter */
+        .love-meter {
+            margin: 30px 0;
+            text-align: center;
+            display: none; /* Hidden until YES is clicked */
+        }
+
+        .meter-container {
+            width: 100%;
+            height: 30px;
+            background-color: #f3f3f3;
+            border-radius: 15px;
+            margin: 10px 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .meter-fill {
+            height: 100%;
+            background: linear-gradient(to right, #ff6b6b, #ff8e8e);
+            width: 0;
+            border-radius: 15px;
+            transition: width 1.5s ease-out;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        .meter-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            color: #ff6b6b;
+            margin-top: 5px;
+        }
+
+        /* Secret Messages */
+        .secret {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+
+        .secret-message {
+            visibility: hidden;
+            width: 200px;
+            background-color: white;
+            color: #555;
+            text-align: center;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            font-size: 0.9rem;
+        }
+
+        .secret:hover .secret-message {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 90%;
+            width: 400px;
+            animation: modalAppear 0.5s;
+            position: relative;
+        }
+
+        @keyframes modalAppear {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .modal-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .yes-btn {
+            background-color: #ff6b6b;
+            color: white;
+        }
+
+        .no-btn {
+            background-color: #f3f3f3;
+            color: #555;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .no-btn:hover {
+            background-color: #e0e0e0;
+        }
+
+        .modal-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .modal-sticker {
+            width: 150px;
+            margin: 20px auto;
+        }
+
+        .plead-text {
+            color: #ff6b6b;
+            font-style: italic;
+            margin-top: 10px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .letter {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            p {
+                font-size: 1rem;
+            }
+            
+            
+            
+            .love-meter {
+                margin: 20px 0;
+            }
+            
+            .modal-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+
+    <div class="letter" id="mainLetter">
+        <h1>Dear Viraj,</h1>
+        <p>Every moment with you feels like a beautiful dream. Your smile brightens my darkest days and your love fills my heart with joy.</p>
+        
+        <div class="love-meter" id="loveMeterContainer">
+            <p>Our love meter:</p>
+            <div class="meter-container">
+                <div class="meter-fill" id="loveMeter">0%</div>
+            </div>
+            <div class="meter-text" id="loveText">Calculating our love...</div>
+        </div>
+        
+        <p>I just wanted to remind you how <span class="secret">special<span class="secret-message">You're the most special person in my life!</span></span> you are to me. You're amazing in every way!</p>
+        <p>There are so many <span class="secret">reasons<span class="secret-message">Your kindness, your smile, your love - everything about you!</span></span> why I love you.</p>
+        <p>Forever yours,</p>
+        <p style="font-family: 'Dancing Script', cursive; font-size: 1.5rem;">❤️</p>
+    </div>
+
+    <div class="music-control" onclick="toggleMusic()">
+        <span id="music-icon">🎵</span>
+    </div>
+
+    <!-- Forever Modal -->
+    <div class="modal" id="foreverModal">
+        <div class="modal-content">
+            <h2>Would you stay forever with me?</h2>
+            <p class="plead-text" id="pleadText">Please say yes... ❤️</p>
+            <div class="modal-buttons">
+                <button class="modal-btn yes-btn" onclick="answerYes()">YES!</button>
+                <button class="modal-btn no-btn" id="noButton">No</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Yes Modal -->
+    <div class="modal" id="yesModal">
+        <div class="modal-content">
+            <h2>I knew you'd say yes! ❤️</h2>
+            <img class="modal-sticker" src="bouqet.png" alt="Couple kissing">
+            <p>Now let me show you how much I love you...</p>
+            <button class="modal-btn yes-btn" onclick="closeModal('yesModal')">Show Me!</button>
+        </div>
+    </div>
+
+    <audio id="bg-music" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // Create floating hearts
+        function createHearts() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            
+            const size = Math.random() * 30 + 10;
+            const colors = ['#ff6b6b', '#ff8e8e', '#ffb3b3', '#ffd8d8'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            
+            heart.innerHTML = '❤️';
+            heart.style.fontSize = `${size}px`;
+            heart.style.color = color;
+            heart.style.left = Math.random() * window.innerWidth + 'px';
+            heart.style.top = Math.random() * window.innerHeight + 'px';
+            heart.style.animationDuration = Math.random() * 4 + 3 + 's';
+            
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+
+        // Create hearts periodically
+        setInterval(createHearts, 300);
+
+        // Music control
+        const bgMusic = document.getElementById('bg-music');
+        let isPlaying = false;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                bgMusic.pause();
+                document.getElementById('music-icon').textContent = '🔇';
+            } else {
+                bgMusic.play();
+                document.getElementById('music-icon').textContent = '🎵';
+            }
+            isPlaying = !isPlaying;
+        }
+
+        // Love meter animation
+        function animateLoveMeter() {
+            const meter = document.getElementById('loveMeter');
+            const text = document.getElementById('loveText');
+            const phrases = [
+                "To the moon and back!",
+                "More than all the stars!",
+                "Infinitely!",
+                "Beyond measure!",
+                "More than words can say!",
+                "You complete me!",
+                "My heart belongs to you!",
+                "Eternally yours!",
+                "My soulmate!",
+                "The love of my life!"
+            ];
+            
+            // Show the love meter container
+            document.getElementById('loveMeterContainer').style.display = 'block';
+            
+            let width = 0;
+            const interval = setInterval(() => {
+                if (width >= 100) {
+                    clearInterval(interval);
+                    // Change text periodically
+                    setInterval(() => {
+                        text.textContent = phrases[Math.floor(Math.random() * phrases.length)];
+                    }, 2000);
+                } else {
+                    width++;
+                    meter.style.width = width + '%';
+                    meter.textContent = width + '%';
+                    
+                    // Update text during animation
+                    if (width < 30) {
+                        text.textContent = "Just getting started...";
+                    } else if (width < 60) {
+                        text.textContent = "Growing stronger...";
+                    } else if (width < 90) {
+                        text.textContent = "Almost there...";
+                    } else {
+                        text.textContent = "Maximum love!";
+                    }
+                }
+            }, 20);
+        }
+
+        // Modal functions
+        function showModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        function answerYes() {
+            closeModal('foreverModal');
+            showModal('yesModal');
+            
+            // Create celebration hearts
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => createHearts(), i * 100);
+            }
+            
+            // After closing yesModal, show the love meter
+            document.getElementById('yesModal').querySelector('button').addEventListener('click', function() {
+                closeModal('yesModal');
+                animateLoveMeter();
+                
+                // Make the letter appear
+                document.getElementById('mainLetter').style.animation = 'letterAppear 1.5s forwards';
+            });
+        }
+
+        // Make the NO button move away when hovered
+        document.getElementById('noButton').addEventListener('mouseover', function() {
+            const noBtn = this;
+            const pleadText = document.getElementById('pleadText');
+            
+            // Move button randomly
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = Math.random() * 200 - 100 + 'px';
+            noBtn.style.top = Math.random() * 100 - 50 + 'px';
+            
+            // Change plead text
+            const pleadMessages = [
+                "Please say yes...",
+                "Don't click no!",
+                "I'll keep asking!",
+                "Try the YES button!",
+                "Pretty please?",
+                "You know you want to!",
+                "My heart will break!",
+                "Give us a chance!",
+                "Just click YES!",
+                "I'll love you forever!"
+            ];
+            pleadText.textContent = pleadMessages[Math.floor(Math.random() * pleadMessages.length)];
+            
+            // Make text pulse more
+            pleadText.style.animation = 'pulse 0.8s infinite';
+        });
+
+        // Initialize everything when page loads
+        window.onload = function() {
+            // Show the forever modal immediately
+            showModal('foreverModal');
+            
+            // Optional: Confetti effect when clicking the letter
+            document.querySelector('.letter').addEventListener('click', () => {
+                for (let i = 0; i < 20; i++) {
+                    setTimeout(() => createHearts(), i * 100);
+                }
+            });
+        };
+    </script>
+</body>
+</html>
